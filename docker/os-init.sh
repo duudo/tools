@@ -37,7 +37,7 @@ chmod +x /usr/local/bin/docker-compose
 #add aliyun mirror
 echo '{
    "registry-mirrors": ["https://pa7zg6wf.mirror.aliyuncs.com"]
-}'>/etc/docker/daemon.json \
+}'>/etc/docker/daemon.json
 systemctl restart docker
 
 #check if docker and docker-compose installed successfully
