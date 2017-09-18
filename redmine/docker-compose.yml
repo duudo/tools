@@ -1,0 +1,40 @@
+version: "3"
+services:
+  redmine:
+    container_name: redmine
+    image: redmine:3.4.2
+    hostname: redmine-host
+    network_mode: bridge
+    restart: always
+    ports:
+      - 8080:3000
+    environment:
+      REDMINE_DB_MYSQL: mysql
+      REDMINE_DB_PASSWD: redmine
+    volumes:
+      - redmine_attach_data:/usr/src/redmine/files
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    links:
+      - redmine_db:mysql
+
+  redmine_db:
+    image: mysql:5.7
+    hostname: mysql-redmine
+    container_name: redmine_db
+    network_mode: bridge
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: redmine
+      MYSQL_DATABASE: redmine
+    volumes:
+      - ./conf/mysql/my-mysql.cnf:/etc/mysql/conf.d/my-mysql.cnf
+      - redmine_mysql_data:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+
+volumes:
+  redmine_attach_data: {}
+  redmine_mysql_data: {}
