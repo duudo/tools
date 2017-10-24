@@ -1,6 +1,6 @@
 #!/bin/bash
 #The script is for ubuntu16.04 to init docker env. Including install docker-ce and docker-compose
-#cp /etc/apt/sources.list /etc/apt/sources.list.bak
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
 echo "deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
@@ -19,7 +19,8 @@ apt-get update
 apt-get install -qy apt-transport-https \
     ca-certificates \
     curl \
-    software-properties-common
+    software-properties-common \
+    lsb-core
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 add-apt-repository \
