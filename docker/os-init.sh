@@ -12,8 +12,8 @@ deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted univers
 deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse">/etc/apt/sources.list
 
-#DOCKER_VERSION=17.06.0-ce
-DOCKER_COMPOSE_VERSION=1.14.0
+DOCKER_VERSION=17.09.0-ce
+DOCKER_COMPOSE_VERSION=1.17.0-rc1
 
 apt-get update
 apt-get install -qy apt-transport-https \
